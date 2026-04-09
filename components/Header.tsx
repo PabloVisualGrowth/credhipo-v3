@@ -20,9 +20,16 @@ const isNavbarOverDarkSection = () => {
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isInHero, setIsInHero] = useState(window.scrollY < window.innerHeight - 80);
-  const [isDarkSection, setIsDarkSection] = useState(isNavbarOverDarkSection);
+  const [isInHero, setIsInHero] = useState(true);
+  const [isDarkSection, setIsDarkSection] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    // Initialize from actual scroll position on mount
+    setIsInHero(window.scrollY < window.innerHeight - 80);
+    setIsDarkSection(isNavbarOverDarkSection());
+    setLastScrollY(window.scrollY);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
