@@ -1,47 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-const sections = [
-  { id: "inicio", label: "Inicio" },
-  { id: "servicios", label: "Servicios" },
-  { id: "calculadora", label: "Calculadora" },
-  { id: "como-trabajamos", label: "Cómo trabajamos" },
-  { id: "nosotros", label: "Nosotros" },
-  { id: "equipo", label: "Equipo" },
-  { id: "blog", label: "Blog" },
-  { id: "contacto", label: "Contacto" },
+const pages = [
+  { href: "/", label: "Inicio" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/calculadora", label: "Calculadora" },
+  { href: "/como-trabajamos", label: "Cómo trabajamos" },
+  { href: "/nosotros", label: "Nosotros" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 const ScrollNav = () => {
-  const [active, setActive] = useState("inicio");
-
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    sections.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(id);
-        },
-        { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
+  const pathname = usePathname();
 
   return (
-    <nav className="fixed right-5 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3 hidden md:flex">
-      {sections.map(({ id, label }) => (
-        <a
-          key={id}
-          href={`#${id}`}
+    <nav className="fixed right-5 top-1/2 -translate-y-1/2 z-40 flex-col gap-3 hidden md:flex">
+      {pages.map(({ href, label }) => (
+        <Link
+          key={href}
+          href={href}
           title={label}
           className={`block w-2 h-2 rounded-full transition-all duration-300 ${
-            active === id
+            pathname === href
               ? "bg-primary scale-150"
               : "bg-primary/30 hover:bg-primary/60"
           }`}

@@ -78,7 +78,7 @@ const Hero = () => {
           {/* CTA */}
           <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
             <Button asChild variant="hero" size="lg" className="w-full sm:w-auto text-xs sm:text-sm md:text-base py-5 md:py-6">
-              <a href="https://credhipo-v2.vercel.app/#contacto">
+              <a href="/contacto">
                 Hablar con un asesor
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>

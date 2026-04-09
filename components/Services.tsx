@@ -148,7 +148,7 @@ const Services = () => {
               En todos estos casos, en CredHipo trabajamos para estructurar, presentar y defender cada operación con criterio financiero y legal, facilitando el acceso a financiación y reduciendo riesgos durante todo el proceso.
             </p>
             <Button asChild variant="cta" size="lg" className="rounded-full flex-shrink-0 self-start md:self-auto">
-              <a href="https://credhipo-v2.vercel.app/#contacto">
+              <a href="/contacto">
                 ¿Necesitas un bróker hipotecario?
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>

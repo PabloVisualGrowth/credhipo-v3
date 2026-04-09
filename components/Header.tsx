@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 const logoMain = "/logo-main.png";
 
-const NAVBAR_HEIGHT = 88; // px — approximate bottom of navbar
+const NAVBAR_HEIGHT = 88;
 const DARK_IDS = ["como-trabajamos", "equipo"];
 
 const isNavbarOverDarkSection = () => {
@@ -12,12 +14,14 @@ const isNavbarOverDarkSection = () => {
     const el = document.getElementById(id);
     if (!el) return false;
     const rect = el.getBoundingClientRect();
-    // Dark if section top is above navbar bottom AND section bottom is below page top
     return rect.top <= NAVBAR_HEIGHT && rect.bottom >= 0;
   });
 };
 
 const Header = () => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isInHero, setIsInHero] = useState(true);
@@ -25,17 +29,18 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Initialize from actual scroll position on mount
-    setIsInHero(window.scrollY < window.innerHeight - 80);
-    setIsDarkSection(isNavbarOverDarkSection());
+    setIsInHero(isHomePage ? window.scrollY < window.innerHeight - 80 : false);
+    setIsDarkSection(isHomePage ? isNavbarOverDarkSection() : false);
     setLastScrollY(window.scrollY);
-  }, []);
+  }, [isHomePage]);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setIsInHero(currentScrollY < window.innerHeight - 80);
-      setIsDarkSection(isNavbarOverDarkSection());
+      if (isHomePage) {
+        setIsInHero(currentScrollY < window.innerHeight - 80);
+        setIsDarkSection(isNavbarOverDarkSection());
+      }
       if (currentScrollY < lastScrollY || currentScrollY < 50) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
@@ -46,17 +51,16 @@ const Header = () => {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, isHomePage]);
 
   const navLinks = [
-    { href: "#servicios", label: "Servicios" },
-    { href: "#nosotros", label: "Nosotros" },
-    { href: "#como-trabajamos", label: "Cómo trabajamos" },
-    { href: "#calculadora", label: "Calculador hipoteca" },
-    { href: "#blog", label: "Blog" },
+    { href: "/servicios", label: "Servicios" },
+    { href: "/nosotros", label: "Nosotros" },
+    { href: "/como-trabajamos", label: "Cómo trabajamos" },
+    { href: "/calculadora", label: "Calculador hipoteca" },
+    { href: "/blog", label: "Blog" },
   ];
 
-  // White pill always — except when physically over a dark blue section
   const onDark = !isInHero && isDarkSection;
 
   const navBg = onDark
@@ -78,26 +82,32 @@ const Header = () => {
       <div className="container mx-auto px-4 py-3">
         <div className={`flex items-center justify-between h-16 md:h-20 rounded-2xl px-6 transition-all duration-500 ${navBg}`}>
           <div className="flex items-center flex-shrink-0">
-            <img
-              src={logoMain}
-              alt="CredHipo"
-              className={`h-10 md:h-14 w-auto transition-all duration-500 ${logoFilter}`}
-            />
+            <Link href="/">
+              <img
+                src={logoMain}
+                alt="CredHipo"
+                className={`h-10 md:h-14 w-auto transition-all duration-500 ${logoFilter}`}
+              />
+            </Link>
           </div>
 
           <nav className="hidden xl:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
-                className={`whitespace-nowrap text-sm font-semibold px-3 py-2 transition-colors duration-300 ${textClass}`}
+                className={`whitespace-nowrap text-sm font-semibold px-3 py-2 transition-colors duration-300 ${
+                  pathname === link.href
+                    ? onDark ? "text-white" : "text-primary"
+                    : textClass
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a href="https://credhipo-v2.vercel.app/#contacto" className="btn-contactanos ml-3">
+            <Link href="/contacto" className="btn-contactanos ml-3">
               Contáctanos
-            </a>
+            </Link>
           </nav>
 
           <button
@@ -113,19 +123,23 @@ const Header = () => {
           <div className="xl:hidden bg-white border-t border-border rounded-b-2xl shadow-md animate-fade-in">
             <nav className="flex flex-col py-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
-                  className="px-4 py-3 text-foreground hover:bg-muted transition-colors"
+                  className={`px-4 py-3 transition-colors ${
+                    pathname === link.href
+                      ? "text-primary font-semibold bg-muted"
+                      : "text-foreground hover:bg-muted"
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <div className="px-4 pt-2 pb-3">
-                <a href="https://credhipo-v2.vercel.app/#contacto" className="btn-contactanos" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href="/contacto" className="btn-contactanos" onClick={() => setIsMobileMenuOpen(false)}>
                   Contáctanos
-                </a>
+                </Link>
               </div>
             </nav>
           </div>

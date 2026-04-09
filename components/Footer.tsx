@@ -10,10 +10,10 @@ const Footer = () => {
 
   const links = {
     empresa: [
-      { label: "Sobre nosotros", href: "#nosotros" },
-      { label: "Blog", href: "#blog" },
-      { label: "Trabaja con nosotros", href: "#" },
-      { label: "Contacto", href: "#contacto" },
+      { label: "Sobre nosotros", href: "/nosotros" },
+      { label: "Blog", href: "/blog" },
+      { label: "Trabaja con nosotros", href: "/contacto" },
+      { label: "Contacto", href: "/contacto" },
     ],
     legal: [
       { label: "Política de privacidad", href: "/privacidad" },

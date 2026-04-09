@@ -99,7 +99,7 @@ const MortgageCalculator = () => {
               </div>
 
               <Button asChild variant="cta" size="lg">
-                <a href="https://credhipo-v2.vercel.app/#contacto">Solicitar estudio gratuito</a>
+                <a href="/contacto">Solicitar estudio gratuito</a>
               </Button>
             </div>
 
