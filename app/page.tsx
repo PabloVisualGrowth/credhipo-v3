@@ -6,7 +6,6 @@ import MortgageCalculator from "@/components/MortgageCalculator";
 import About from "@/components/About";
 import Storytelling from "@/components/Storytelling";
 import Blog from "@/components/Blog";
-import Team from "@/components/Team";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
@@ -52,7 +51,6 @@ export default function HomePage() {
         <MortgageCalculator />
         <Storytelling />
         <About />
-        <Team />
         <Blog />
         <ContactCTA />
       </main>
