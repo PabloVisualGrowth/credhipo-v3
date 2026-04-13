@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
-const logoFooter = "/logo-footer-text.png";
+const logoFooter = "/logo-main.png";
 import ReclamacionesModal from "@/components/ReclamacionesModal";
 
 const Footer = () => {
@@ -41,6 +41,7 @@ const Footer = () => {
                 src={logoFooter}
                 alt="CredHipo - Donde tu Hogar Comienza"
                 className="h-16 w-auto mb-6"
+                style={{ filter: "brightness(0) invert(1)" }}
               />
               <p className="text-primary-foreground/70 mb-6 max-w-sm leading-relaxed">
                 Somos expertos en intermediación hipotecaria. Te ayudamos a
