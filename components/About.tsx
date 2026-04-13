@@ -150,10 +150,58 @@ const About = () => {
                   Porque cuando se trata de tu vivienda o tu inversión, la confianza no es opcional.
                 </p>
               </div>
+
+              {/* Team toggle button */}
+              <Button
+                variant="outline"
+                className="flex items-center gap-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+                onClick={() => setShowTeam(!showTeam)}
+              >
+                {showTeam ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                El equipo
+              </Button>
             </div>
           </div>
         </BlurFade>
+
+        {/* Team cards — full width, below the grid */}
+        {showTeam && (
+          <BlurFade inView delay={0.1}>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+              {team.map((member, i) => (
+                <div
+                  key={i}
+                  className="bg-white border border-gray-100 rounded-2xl shadow-md p-6 flex flex-col gap-4 hover:shadow-lg transition-shadow"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center shrink-0">
+                      <span className="text-xl font-heading font-bold text-primary">{member.name.charAt(0)}</span>
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold text-foreground text-base leading-tight">{member.name}</h3>
+                      <p className="text-xs text-secondary font-medium uppercase tracking-wider mt-0.5">{member.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{member.bio[0]}</p>
+                  <div className="flex flex-wrap gap-1.5 mt-auto">
+                    {member.skills.slice(0, 2).map((s, si) => (
+                      <span key={si} className="bg-primary/10 text-primary text-xs font-medium px-2.5 py-1 rounded-full">{s}</span>
+                    ))}
+                  </div>
+                  <button
+                    onClick={() => setSelectedMember(member)}
+                    className="mt-1 text-xs font-semibold text-primary uppercase tracking-wider hover:underline text-left"
+                  >
+                    Ver perfil completo →
+                  </button>
+                </div>
+              ))}
+            </div>
+          </BlurFade>
+        )}
       </div>
+
+      {selectedMember && <TeamModal member={selectedMember} onClose={() => setSelectedMember(null)} />}
     </section>
   );
 };

@@ -57,7 +57,13 @@ const ContactCTA = () => {
               <div className="w-[300px] md:w-[320px] lg:w-[350px]">
                 <Iphone>
                   <div className="h-full bg-primary p-6 pt-12 flex flex-col overflow-y-auto scrollbar-hide">
-<span className="inline-block text-xs font-medium text-primary-foreground/90 uppercase tracking-wider mb-4">
+                    <img
+                      src="/logo-footer.png"
+                      alt="CredHipo"
+                      className="h-10 w-auto object-contain mb-6"
+                      style={{ filter: "brightness(0) invert(1)" }}
+                    />
+                    <span className="inline-block text-xs font-medium text-primary-foreground/90 uppercase tracking-wider mb-4">
                       Contacto
                     </span>
                     <h2 className="text-2xl font-heading font-bold text-primary-foreground mb-4">
