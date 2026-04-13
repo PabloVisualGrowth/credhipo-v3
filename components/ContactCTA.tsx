@@ -60,7 +60,7 @@ const ContactCTA = () => {
                     <img
                       src="/logo-footer.png"
                       alt="CredHipo"
-                      className="h-10 w-auto object-contain mb-6"
+                      className="h-16 w-auto object-contain mb-6"
                     />
                     <span className="inline-block text-xs font-medium text-primary-foreground/90 uppercase tracking-wider mb-4">
                       Contacto

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
-const logoFooter = "/logo-footer.png";
+const logoFooter = "/logo-footer-text.png";
 import ReclamacionesModal from "@/components/ReclamacionesModal";
 
 const Footer = () => {
