@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const sections = [
-  { id: "inicio",          label: "Inicio" },
-  { id: "servicios",       label: "Servicios" },
-  { id: "calculadora",     label: "Calculadora" },
-  { id: "como-trabajamos", label: "Cómo trabajamos" },
-  { id: "nosotros",        label: "Nosotros" },
-  { id: "blog",            label: "Blog" },
-  { id: "contacto",        label: "Contacto" },
+  { id: "inicio",          label: "Inicio",           dark: true  },
+  { id: "servicios",       label: "Servicios",         dark: false },
+  { id: "calculadora",     label: "Calculadora",       dark: false },
+  { id: "como-trabajamos", label: "Cómo trabajamos",   dark: true  },
+  { id: "nosotros",        label: "Nosotros",          dark: false },
+  { id: "blog",            label: "Blog",              dark: false },
+  { id: "contacto",        label: "Contacto",          dark: false },
 ];
 
 const ScrollNav = () => {
@@ -19,6 +19,8 @@ const ScrollNav = () => {
 
   // Only show on homepage
   if (pathname !== "/") return null;
+
+  const isDark = sections.find((s) => s.id === active)?.dark ?? false;
 
   // Track which section is in view
   useEffect(() => {
@@ -55,8 +57,12 @@ const ScrollNav = () => {
           title={label}
           className={`block w-2 h-2 rounded-full transition-all duration-300 ${
             active === id
-              ? "bg-primary scale-150"
-              : "bg-primary/30 hover:bg-primary/60"
+              ? isDark
+                ? "bg-white scale-150"
+                : "bg-primary scale-150"
+              : isDark
+                ? "bg-white/40 hover:bg-white/70"
+                : "bg-primary/30 hover:bg-primary/60"
           }`}
         />
       ))}
