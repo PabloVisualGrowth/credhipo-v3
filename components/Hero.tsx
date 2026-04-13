@@ -17,11 +17,13 @@ const Hero = () => {
       >
         {/* Left-to-right overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/50 md:from-primary/90 md:via-primary/70 md:to-primary/40" />
-        {/* Bottom blur - grows when text expands to hide the image cutoff */}
+        {/* Bottom fade - smooth gradient, no hard blur edge */}
         <div
-          className={`absolute bottom-0 left-0 right-0 backdrop-blur-sm bg-gradient-to-t from-primary via-primary/90 to-transparent transition-all duration-500 ${
-            expanded ? "h-80" : "h-24"
-          }`}
+          className="absolute bottom-0 left-0 right-0 transition-all duration-500"
+          style={{
+            height: expanded ? "28rem" : "14rem",
+            background: "linear-gradient(to top, hsl(var(--primary)) 30%, hsl(var(--primary) / 0.85) 55%, hsl(var(--primary) / 0.4) 75%, transparent 100%)",
+          }}
         />
       </div>
 
