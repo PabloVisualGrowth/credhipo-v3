@@ -8,43 +8,32 @@ import { X, ChevronDown, ChevronUp } from "lucide-react";
 
 const team = [
   {
-    name: "Ángel Fernández Simón",
-    role: "Socio Fundador",
+    name: “Ángel Fernández Simón”,
     photo: null,
     bio: [
-      "Emprendedor reconocido en el sector inmobiliario y financiero, con una trayectoria consolidada en la creación, desarrollo y gestión de proyectos de alto impacto.",
-      "Fundador de la inmobiliaria “Don Piso”, una de las marcas más relevantes del mercado español, siendo protagonista directo en la profesionalización y modernización del sector inmobiliario en España.",
-    ],
-    skills: ["Visión estratégica", "Conocimiento de mercado", "Red de contactos", "Solución financiera a medida"],
-    education: [],
-  },
-  {
-    name: "Carmen Rosas",
-    role: "Especialista Financiera Senior",
-    photo: null,
-    bio: [
-      "Más de 30 años de experiencia en banca. Ha desarrollado su carrera en entidades como Bancaja y Bankia, ocupando puestos de alta responsabilidad en gestión comercial, dirección de red y desarrollo de negocio en Cataluña.",
-      "Aplica su experiencia bancaria y el conocimiento del sistema financiero para garantizar operaciones sólidas, viables y en las mejores condiciones del mercado.",
-    ],
-    skills: ["Financiación hipotecaria", "Análisis de riesgos", "Negociación con entidades", "Estructuración de operaciones"],
-    education: [
-      "Licenciada en Ciencias Empresariales — Universidad de Barcelona",
-      "Intermediación en crédito inmobiliario y asesoramiento — Banco de España",
-      "Agente de la Propiedad Inmobiliaria",
+      “Ángel Fernández Simón es un reconocido empresario del sector inmobiliario y financiero, con una trayectoria consolidada en la creación, desarrollo y gestión de proyectos de alto impacto.”,
+      “Fundador de la inmobiliaria Don Piso, una de las marcas más relevantes del mercado español, ha sido protagonista directo en la profesionalización y modernización del sector inmobiliario en España. Su visión estratégica y capacidad para identificar oportunidades han marcado su carrera empresarial durante décadas.”,
+      “En la actualidad, como socio fundador de Credhipo, aporta al proyecto su profundo conocimiento del mercado, una sólida red de contactos y una clara orientación a resultados, contribuyendo al desarrollo de soluciones financieras eficientes y adaptadas a las necesidades reales de clientes e inversores.”,
     ],
   },
   {
-    name: "Marta Oropesa",
-    role: "Responsable de Análisis Legal",
+    name: “Carmen Rosas”,
     photo: null,
     bio: [
-      "Más de 10 años de experiencia en el sector inmobiliario y financiero. Ha desarrollado su carrera en empresas como Aliseda Inmobiliaria, gestionando carteras de activos y operaciones vinculadas a fondos de inversión.",
-      "Lidera el análisis legal de las operaciones, garantizando seguridad y transparencia en cada proceso con rigor jurídico y visión práctica del mercado.",
+      “Profesional del sector financiero con más de 30 años de experiencia en banca, Carmen Rosas ha desarrollado su carrera en entidades como Bancaja y Bankia, ocupando posiciones de alta responsabilidad en dirección comercial, gestión de redes y desarrollo de negocio en Cataluña.”,
+      “Especialista en financiación hipotecaria, análisis de riesgo y negociación con entidades financieras, aporta una visión estratégica clave en la estructuración de operaciones y en la optimización de condiciones de financiación.”,
+      “Licenciada en Ciencias Empresariales por la Universidad de Barcelona, cuenta además con los Títulos de Intermediación en crédito inmobiliario y asesoramiento, homologado por Banco de España, y de Agente de la Propiedad Inmobiliaria.”,
+      “En Credhipo, aporta su experiencia en banca y su conocimiento del sistema financiero para garantizar operaciones sólidas, viables y con las mejores condiciones de mercado.”,
     ],
-    skills: ["Operaciones complejas", "Procesos de compraventa", "Procedimientos ejecutivos y subastas", "Viabilidad jurídica"],
-    education: [
-      "Graduada en Derecho",
-      "Intermediación en crédito inmobiliario y asesoramiento — Banco de España",
+  },
+  {
+    name: “Marta Oropesa”,
+    photo: null,
+    bio: [
+      “Profesional del sector inmobiliario y financiero con más de 10 años de experiencia, Marta Oropesa ha desarrollado su trayectoria en compañías como Aliseda Inmobiliaria, gestionando carteras de activos y operaciones vinculadas a fondos de inversión, así como en entornos de alta exigencia jurídica y financiera.”,
+      “Especialista en la gestión de operaciones complejas y en el acompañamiento integral en procesos de compraventa y financiación, cuenta con experiencia en procedimientos ejecutivos, subastas y cesiones de remate, aportando soluciones eficaces en contextos de elevada complejidad.”,
+      “Graduada en Derecho y poseedora del Título de Intermediación en crédito inmobiliario y asesoramiento, homologado por Banco de España, combina un sólido rigor jurídico con una visión práctica del mercado que le permite analizar la viabilidad de cada operación y estructurar soluciones adaptadas.”,
+      “En Credhipo, lidera el análisis legal de las operaciones, garantizando la seguridad y transparencia en cada proceso.”,
     ],
   },
 ];
@@ -73,35 +62,13 @@ const TeamModal = ({ member, onClose }: { member: typeof team[0]; onClose: () =>
           )}
         </div>
         <h3 className="text-2xl font-heading font-bold text-white text-center">{member.name}</h3>
-        <p className="text-primary-foreground/70 text-center mt-1 text-sm font-medium uppercase tracking-wider">{member.role}</p>
       </div>
-      <div className="p-8 space-y-6">
-        <div className="space-y-3">
+      <div className="p-8">
+        <div className="space-y-4">
           {member.bio.map((p, i) => (
             <p key={i} className="text-muted-foreground leading-relaxed">{p}</p>
           ))}
         </div>
-        <div>
-          <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">Especialidades</h4>
-          <div className="flex flex-wrap gap-2">
-            {member.skills.map((s, i) => (
-              <span key={i} className="bg-primary/10 text-primary text-xs font-medium px-3 py-1.5 rounded-full">{s}</span>
-            ))}
-          </div>
-        </div>
-        {member.education.length > 0 && (
-          <div>
-            <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">Formación</h4>
-            <ul className="space-y-2">
-              {member.education.map((e, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  {e}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
       </div>
     </div>
   </div>
@@ -182,11 +149,6 @@ const About = () => {
                     </div>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{member.bio[0]}</p>
-                  <div className="flex flex-wrap gap-1.5 mt-auto">
-                    {member.skills.slice(0, 2).map((s, si) => (
-                      <span key={si} className="bg-primary/10 text-primary text-xs font-medium px-2.5 py-1 rounded-full">{s}</span>
-                    ))}
-                  </div>
                   <button
                     onClick={() => setSelectedMember(member)}
                     className="mt-1 text-xs font-semibold text-primary uppercase tracking-wider hover:underline text-left"
