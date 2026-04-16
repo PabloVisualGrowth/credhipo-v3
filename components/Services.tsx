@@ -25,10 +25,9 @@ const services = [
 ];
 
 const profiles = [
-  "Profesionales autónomos o empresarios, cuyos ingresos no siempre se presentan de forma clara para las entidades financieras",
-  "Personas con ingresos variables o estructuras laborales no tradicionales",
-  "Extranjeros residentes o no residentes, que necesitan adaptar su perfil a los requisitos del sistema financiero español",
   "Compradores que quieren asegurarse de que todo el proceso es correcto, más allá de la financiación",
+  "Profesionales autónomos o empresarios, cuyos ingresos no siempre se presentan de forma clara para las entidades financieras",
+  "Extranjeros residentes o no residentes, que necesitan adaptar su perfil a los requisitos del sistema financiero español",
   "Inversores inmobiliarios, que buscan analizar cada operación con una visión estratégica y rentable",
 ];
 
