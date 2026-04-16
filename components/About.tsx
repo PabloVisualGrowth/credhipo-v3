@@ -9,6 +9,7 @@ import { X, ChevronDown, ChevronUp } from "lucide-react";
 const team = [
   {
     name: "Ángel Fernández Simón",
+    role: null,
     photo: null,
     bio: [
       "Ángel Fernández Simón es un reconocido empresario del sector inmobiliario y financiero, con una trayectoria consolidada en la creación, desarrollo y gestión de proyectos de alto impacto.",
@@ -18,6 +19,7 @@ const team = [
   },
   {
     name: "Carmen Rosas",
+    role: "Asesora financiera en crédito hipotecario según la Ley 5/2019",
     photo: null,
     bio: [
       "Profesional del sector financiero con más de 30 años de experiencia en banca, Carmen Rosas ha desarrollado su carrera en entidades como Bancaja y Bankia, ocupando posiciones de alta responsabilidad en dirección comercial, gestión de redes y desarrollo de negocio en Cataluña.",
@@ -28,6 +30,7 @@ const team = [
   },
   {
     name: "Marta Oropesa",
+    role: "Asesora financiera en crédito hipotecario según la Ley 5/2019",
     photo: null,
     bio: [
       "Profesional del sector inmobiliario y financiero con más de 10 años de experiencia, Marta Oropesa ha desarrollado su trayectoria en compañías como Aliseda Inmobiliaria, gestionando carteras de activos y operaciones vinculadas a fondos de inversión, así como en entornos de alta exigencia jurídica y financiera.",
@@ -62,6 +65,9 @@ const TeamModal = ({ member, onClose }: { member: typeof team[0]; onClose: () =>
           )}
         </div>
         <h3 className="text-2xl font-heading font-bold text-white text-center">{member.name}</h3>
+        {member.role && (
+          <p className="text-xs font-semibold text-white/70 uppercase tracking-widest text-center mt-2">{member.role}</p>
+        )}
       </div>
       <div className="p-8">
         <div className="space-y-4">
