@@ -91,6 +91,7 @@ const Team = () => {
             return (
               <div
                 key={i}
+                className={isExpanded ? "hide-scrollbar" : ""}
                 onClick={() => isActive && setExpanded(isExpanded ? null : i)}
                 style={{
                   position: "absolute",

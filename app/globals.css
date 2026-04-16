@@ -374,3 +374,12 @@
   animation: shine-ring 2s ease-out infinite 0.7s;
   border-color: rgba(250,249,246,0.35);
 }
+
+/* Hide scrollbar while keeping scroll functionality */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

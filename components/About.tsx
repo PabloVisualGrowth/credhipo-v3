@@ -47,7 +47,7 @@ const TeamModal = ({ member, onClose }: { member: typeof team[0]; onClose: () =>
     onClick={onClose}
   >
     <div
-      className="bg-white rounded-2xl shadow-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto"
+      className="bg-white rounded-2xl shadow-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto hide-scrollbar"
       onClick={(e) => e.stopPropagation()}
     >
       <div className="relative bg-primary rounded-t-2xl p-8 pb-6">
